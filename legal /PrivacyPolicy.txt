@@ -1,0 +1,24 @@
+Privacy Policy
+
+Your privacy matters. Global Ad On Mute and Global Simba AI collect and use your data as follows:
+
+What We Collect:
+- Basic account details (email, device ID, subscription info)
+- User-uploaded ads (audio, video, images)
+- Usage logs (for security and app improvement)
+- Payment information (via Stripe—never stored on our servers)
+
+How We Use It:
+- To operate the app, process payments, and deliver your ads
+- To personalize your experience (including with Global Simba AI)
+- For support, safety, and legal compliance
+
+We do NOT sell your personal data to third parties.  
+Your data is stored securely in global data centers (Firebase, Stripe, etc.) and only accessible by authorized personnel.
+
+Your Rights:
+- You may request deletion of your account and data by emailing smartifybuy@gmail.com or shambez@gmail.com
+- You can export or modify your data via your account settings
+
+For more details, visit SmartifyBuy.com/privacy or email us.  
+(Compliant with GDPR, CCPA, and other global privacy laws)

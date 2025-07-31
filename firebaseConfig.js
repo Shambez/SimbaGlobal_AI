@@ -1,0 +1,1 @@
+// Firebase config setup will be in services/firebase/firebaseConfig.js
