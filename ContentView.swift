@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Simba_AI_App
+//  SimbaGlobal AI
 //
 //  Created by Shambe Babu on 20/7/2025.
 //

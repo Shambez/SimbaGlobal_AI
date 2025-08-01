@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "== Simba AI: Cleaning and Reinstalling Everything =="
+echo "== SimbaGlobal AI: Cleaning and Reinstalling Everything =="
 
 echo "Removing node_modules, yarn.lock and package-lock.json..."
 rm -rf node_modules
@@ -24,8 +24,8 @@ echo ""
 echo "Example:"
 echo '{
   "expo": {
-    "name": "Simba AI App",
-    "slug": "simba-ai-app",
+    "name": "SimbaGlobal AI",
+    "slug": "simbaglobal-ai",
     "jsEngine": "hermes",
     "plugins": ["expo-linking"]
   }

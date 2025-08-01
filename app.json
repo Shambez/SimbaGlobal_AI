@@ -1,19 +1,21 @@
 {
   "expo": {
-    "name": "Simba AI App",
-    "slug": "simba-ai-app",
+    "name": "SimbaGlobal AI",
+    "slug": "simbaglobal-ai",
     "version": "1.0.0",
     "jsEngine": "hermes",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "simbaaiapp",
+    "scheme": "simbaglobal-ai",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "owner": "shambez",
     "ios": {
+      "bundleIdentifier": "com.shambez.simbaglobalai",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.shambez.simbaglobalai",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -29,7 +31,7 @@
       [
         "expo-linking",
         {
-          "scheme": "simbaaiapp"
+          "scheme": "simbaglobal-ai"
         }
       ],
       "expo-router",
