@@ -60,3 +60,4 @@ services/env/OPENAI_API_KEY.env
 >>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
 .DS_Store
 .DS_Store
+*.zip
