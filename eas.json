@@ -1,15 +1,11 @@
 {
   "cli": {
-<<<<<<< HEAD
-    "appVersionSource": "remote"
-=======
-    "appVersionSource": "local"
->>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
+    "appVersionSource": "local" 
+     26e328d (Fix iOS directory casing for EAS Build)
   },
   "build": {
     "development": {
       "distribution": "internal",
-<<<<<<< HEAD
       "developmentClient": true,
       "env": {
         "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyDpttMPyFRNdNSJwx2cdSAn5Tp6m-lFDfc",
@@ -19,9 +15,9 @@
         "EXPO_PUBLIC_API_URL": "https://api.simbaglobal.ai",
         "EXPO_PUBLIC_IS_PRODUCTION": "false"
       }
-=======
+
       "developmentClient": true
->>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
+       26e328d (Fix iOS directory casing for EAS Build)
     },
     "preview": {
       "distribution": "internal",
@@ -35,7 +31,7 @@
       }
     },
     "production": {
-<<<<<<< HEAD
+
       "distribution": "store",
       "env": {
         "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyDpttMPyFRNdNSJwx2cdSAn5Tp6m-lFDfc",
@@ -44,13 +40,12 @@
         "EXPO_PUBLIC_OPENAI_API_KEY": "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",
         "EXPO_PUBLIC_API_URL": "https://api.simbaglobal.ai",
         "EXPO_PUBLIC_IS_PRODUCTION": "true"
-=======
       "android": {
         "buildType": "app-bundle"
       },
       "ios": {
         "simulator": false
->>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
+          26e328d (Fix iOS directory casing for EAS Build)
       }
     }
   },
