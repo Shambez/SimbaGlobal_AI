@@ -2,7 +2,11 @@ import 'dotenv/config';
 
 export default {
   expo: {
+<<<<<<< HEAD
     name: 'SimbaGlobal_AI',
+=======
+    name: 'SimbaGlobal AI',
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
     slug: 'simbaglobal-ai',
     version: '1.0.0',
     jsEngine: 'hermes',

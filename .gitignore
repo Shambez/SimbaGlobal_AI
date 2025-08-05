@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .env*
+=======
+.env
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
 services/env/OPENAI_API_KEY.env
 
 # @generated expo-cli sync-8d4afeec25ea8a192358fae2f8e2fc766bdce4ec
@@ -41,6 +45,7 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+<<<<<<< HEAD
 # @end expo-cliSimba_AI_App.zip
 SimbaGlobal_AI_BACKUP.zip
 Simba_AI_App.zip
@@ -49,4 +54,8 @@ Simba_AI_App.zip
 SimbaGlobal_AI_BACKUP.zip
 .env
 services/env/OPENAI_API_KEY.env
+.DS_Store
+=======
+# @end expo-cli
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
 .DS_Store

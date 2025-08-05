@@ -3,6 +3,7 @@ import 'dotenv/config';
 export default {
   expo: {
     owner: "shambez",
+<<<<<<< HEAD
     name: "SimbaGlobal_AI",
     slug: "simbaglobal-ai",
     version: "1.0.0",
@@ -11,11 +12,22 @@ export default {
     scheme: "simbaglobal-ai",
     ios: {
       bundleIdentifier: "com.shambez.simbaglobalai",
+=======
+    name: 'SimbaGlobal AI',
+    slug: 'simbaglobal-ai',
+    version: '1.0.0',
+    jsEngine: 'hermes',
+    sdkVersion: '53.0.0',
+    scheme: 'simbaglobal-ai',
+    ios: {
+      bundleIdentifier: 'com.shambez.simbaglobalai',
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false
       }
     },
     android: {
+<<<<<<< HEAD
       package: "com.shambez.simbaglobalai"
     },
     extra: {
@@ -35,6 +47,15 @@ export default {
         projectId: "03534e9c-979b-4793-87b0-f34030f1be04"
       }
     },
+=======
+      package: 'com.shambez.simbaglobalai'
+    },
+    extra: {
+      OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+      eas: {
+        projectId: "03534e9c-979b-4793-87b0-f34030f1be04"
+ }    },
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
     cli: {
       appVersionSource: "appVersion"
     }

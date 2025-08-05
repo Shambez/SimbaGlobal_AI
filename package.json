@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "SimbaGlobal_AI",
+=======
+  "name": "SimbaGlobal AI",
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -25,7 +29,11 @@
     "expo-haptics": "~14.1.4",
     "expo-image": "~2.3.2",
     "expo-linking": "~5.0.0",
+<<<<<<< HEAD
     "expo-router": "^5.1.4",
+=======
+    "expo-router": "^3.6.0",
+>>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
     "expo-splash-screen": "~0.30.10",
     "expo-status-bar": "~2.2.3",
     "expo-symbols": "~0.4.5",
@@ -39,7 +47,8 @@
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-web": "~0.20.0",
-    "react-native-webview": "13.13.5"
+    "react-native-webview": "13.13.5",
+    "expo-dev-client": "^3.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
