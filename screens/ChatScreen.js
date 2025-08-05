@@ -1,55 +1,76 @@
-import React, { useState, useRef } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, ScrollView } from 'react-native';
-import { sendMessageToOpenAI } from '../services/openai/openaiService';
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, Button, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import * as Speech from 'expo-speech';
+import LiveLogoPopup from '../components/LiveLogoPopup';
 
 const ChatScreen = () => {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]);
-  const scrollViewRef = useRef();
+  const [liveLogoVisible, setLiveLogoVisible] = useState(true);
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
-    const userMessage = { from: 'user', text: input };
-    setMessages(prev => [...prev, userMessage]);
+  useEffect(() => {
+    if (liveLogoVisible) {
+      Speech.speak("Welcome to my Kingdom. How can I help?", { pitch: 0.6, rate: 0.9 });
+    }
+  }, [liveLogoVisible]);
+
+  const handleDismissLogo = () => setLiveLogoVisible(false);
+
+  const handleSend = () => {
+    // Your message send logic here
     setInput('');
-
-    // Call AI and append its reply (with previous messages kept)
-    const reply = await sendMessageToOpenAI(input);
-    setMessages(prev => [...prev, { from: 'ai', text: reply }]);
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.chatArea}
-        ref={scrollViewRef}
-        onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
-      >
-        {messages.map((msg, idx) => (
-          <Text key={idx} style={msg.from === 'user' ? styles.userText : styles.aiText}>
-            {msg.text}
-          </Text>
-        ))}
-      </ScrollView>
-      <TextInput
-        style={styles.input}
-        value={input}
-        onChangeText={setInput}
-        placeholder="Talk to Simba AI..."
-        onSubmitEditing={handleSend}
-        blurOnSubmit={false}
-      />
-      <Button title="Send" onPress={handleSend} />
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={styles.container}
+    >
+      <LiveLogoPopup visible={liveLogoVisible} onDismiss={handleDismissLogo} />
+      <View style={styles.chatArea}>
+        <Text>SimbaGlobal AI Chat</Text>
+        {/* Messages list here */}
+      </View>
+      <View style={styles.inputArea}>
+        <TextInput
+          style={styles.input}
+          placeholder="Text or talk to SimbaGlobal AI"
+          value={input}
+          onChangeText={setInput}
+        />
+        <TouchableOpacity style={styles.micButton} onPress={() => {/* Voice input logic here */}}>
+          <Text style={styles.micText}>🎤</Text>
+        </TouchableOpacity>
+        <Button title="Send" onPress={handleSend} />
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
-  chatArea: { flex: 1, marginBottom: 10 },
-  input: { borderWidth: 1, borderColor: '#ccc', padding: 10, marginBottom: 5, borderRadius: 8 },
-  userText: { textAlign: 'right', color: '#333', marginBottom: 5, fontWeight: 'bold' },
-  aiText: { textAlign: 'left', color: '#007AFF', marginBottom: 5, fontStyle: 'italic' },
+  container: { flex: 1 },
+  chatArea: { flex: 1, padding: 20 },
+  inputArea: {
+    flexDirection: 'row',
+    padding: 10,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+    alignItems: 'center',
+  },
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#999',
+    borderRadius: 25,
+    paddingHorizontal: 15,
+    height: 40,
+  },
+  micButton: {
+    marginLeft: 10,
+    padding: 10,
+  },
+  micText: {
+    fontSize: 24,
+  },
 });
 
 export default ChatScreen;

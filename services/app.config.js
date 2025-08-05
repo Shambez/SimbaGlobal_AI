@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 export default {
   expo: {
-    name: 'SimbaGlobal AI',
+    name: 'SimbaGlobal_AI',
     slug: 'simbaglobal-ai',
     version: '1.0.0',
     jsEngine: 'hermes',
