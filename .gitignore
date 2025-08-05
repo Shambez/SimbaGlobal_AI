@@ -61,3 +61,4 @@ services/env/OPENAI_API_KEY.env
 .DS_Store
 .DS_Store
 *.zip
+.env*
