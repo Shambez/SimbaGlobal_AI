@@ -6,38 +6,31 @@
     "development": {
       "distribution": "internal",
       "developmentClient": true,
-      "android": {
-        "buildType": "apk"
-      },
-      "ios": {
-        "simulator": true
-      },
       "env": {
-        "ENV_FILE": ".env.development"
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)"
       }
     },
     "preview": {
       "distribution": "internal",
-      "android": {
-        "buildType": "app-bundle"
-      },
-      "ios": {
-        "simulator": false
-      },
       "env": {
-        "ENV_FILE": ".env.preview"
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)"
       }
     },
     "production": {
-      "distribution": "store",
-      "android": {
-        "buildType": "app-bundle"
-      },
       "ios": {
         "simulator": false
       },
+      "android": {
+        "buildType": "app-bundle"
+      },
       "env": {
-        "ENV_FILE": ".env.production"
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)"
       }
     }
   },
