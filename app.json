@@ -1,62 +1,62 @@
 {
-  "expo": {
-<<<<<<< HEAD
-    "name": "SimbaGlobal_AI",
-=======
-    "name": "SimbaGlobal AI",
->>>>>>> 26e328d (Fix iOS directory casing for EAS Build)
-    "slug": "simbaglobal-ai",
-    "version": "1.0.0",
-    "jsEngine": "hermes",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "simbaglobal-ai",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "owner": "shambez",
-    "ios": {
-      "bundleIdentifier": "com.shambez.simbaglobalai",
-      "supportsTablet": true
+  "cli": {
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "developmentClient": true,
+      "env": {
+        "EAS_UPDATE_BRANCH": "development",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "false"
+      }
     },
-    "android": {
-      "package": "com.shambez.simbaglobalai",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EAS_UPDATE_BRANCH": "preview",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "false"
+      }
+    },
+    "production": {
+      "ios": {
+        "simulator": false
       },
-      "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      [
-        "expo-linking",
-        {
-          "scheme": "simbaglobal-ai"
-        }
-      ],
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "d8bf1aa9-62f8-40cd-9c1c-73b1ae3ac442"
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EAS_UPDATE_BRANCH": "production",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "true"
       }
     }
-  }
+  },
+  "submit": {
+    "production": {}
+  },
+  "extra": {
+    "eas": {
+      "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+    }
+  },
+  "owner": "shambez",
+  "slug": "simbaglobalai"
 }
