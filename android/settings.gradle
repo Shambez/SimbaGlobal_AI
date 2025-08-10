@@ -31,7 +31,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 expoAutolinking.useExpoModules()
 
-rootProject.name = 'SimbaGlobal AI'
+rootProject.name = 'SimbaGlobal_AI'
 
 expoAutolinking.useExpoVersionCatalog()
 

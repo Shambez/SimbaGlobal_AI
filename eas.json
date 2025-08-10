@@ -1,23 +1,33 @@
 {
   "cli": {
-    "appVersionSource": "local"
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
       "distribution": "internal",
       "developmentClient": true,
       "env": {
+        "EAS_UPDATE_BRANCH": "development",
         "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
         "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
-        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)"
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "false"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
+        "EAS_UPDATE_BRANCH": "preview",
         "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
         "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
-        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)"
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "false"
       }
     },
     "production": {
@@ -28,9 +38,14 @@
         "buildType": "app-bundle"
       },
       "env": {
+        "EAS_UPDATE_BRANCH": "production",
         "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
         "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
-        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)"
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "true"
       }
     }
   },

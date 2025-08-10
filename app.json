@@ -58,5 +58,15 @@
     }
   },
   "owner": "shambez",
-  "slug": "simbaglobalai"
+  "slug": "simbaglobalai",
+  "runtimeVersion": "1.0.0",
+  "updates": {
+    "url": "https://u.expo.dev/ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+  },
+  "android": {
+    "package": "com.shambez.simbaglobalai"
+  },
+  "ios": {
+    "bundleIdentifier": "com.shambez.simbaglobalai"
+  }
 }
