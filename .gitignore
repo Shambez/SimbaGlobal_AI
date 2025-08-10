@@ -42,3 +42,7 @@ fastlane/test_output
 preview.json
 production.json
 .env*
+
+client_secret_*.json
+ios/SimbaGlobalAI/
+.env*
