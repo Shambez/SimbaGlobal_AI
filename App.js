@@ -1,3 +1,4 @@
+import './linking-shim';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import ChatScreen from './screens/ChatScreen';

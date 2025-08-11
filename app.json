@@ -67,6 +67,9 @@
     "package": "com.shambez.simbaglobalai"
   },
   "ios": {
-    "bundleIdentifier": "com.shambez.simbaglobalai"
+    "bundleIdentifier": "com.shambez.simbaglobalai",
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false
+    }
   }
 }
