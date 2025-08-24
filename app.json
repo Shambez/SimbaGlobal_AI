@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "de9cb649-4017-4978-93e7-89bf96e909d9"
+      }
+    },
+    "android": {
+      "package": "com.shambez.simbaglobal_ai"
+    },
+    "ios": {
+      "bundleIdentifier": "com.shambez.simbaglobal",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
