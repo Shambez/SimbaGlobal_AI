@@ -51,6 +51,14 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {},
+    "preview": {
+      "android": {
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "shambebabu@gmail.com" // replace if different
+      }
+    }
   }
 }
