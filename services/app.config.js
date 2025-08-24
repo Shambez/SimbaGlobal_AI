@@ -10,10 +10,10 @@ export default ({ config }) => {
       owner: "shambez",
       version: "1.0.0",
       orientation: "portrait",
-      icon: "./assets/simba_global_ai.png",
+      icon: "./assets/simba_global_ai_icon.PNG",
       userInterfaceStyle: "light",
       splash: {
-        image: "./assets/images/simba_global_ai.png",
+        image: "./assets/images/splash-simba_global_ai_icon.PNG",
         resizeMode: "contain",
         backgroundColor: "#ffffff"
       },

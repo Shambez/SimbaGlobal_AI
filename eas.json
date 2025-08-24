@@ -20,6 +20,12 @@
     "preview": {
       "distribution": "internal",
       "developmentClient": true,
+      "ios": {
+        "simulator": false
+      },
+      "android": {
+        "buildType": "apk"
+      },
       "env": {
         "EAS_UPDATE_BRANCH": "preview",
         "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
@@ -57,7 +63,7 @@
         "track": "internal"
       },
       "ios": {
-        "appleId": "shambebabu@gmail.com" // replace if different
+        "appleId": "shambebabu@gmail.com"
       }
     }
   }
