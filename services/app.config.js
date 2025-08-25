@@ -10,6 +10,7 @@ export default ({ config }) => {
       owner: "shambez",
       version: "1.0.0",
       orientation: "portrait",
+      scheme: "simbaglobalai", 
       icon: "./assets/simba_global_ai_icon.PNG",
       userInterfaceStyle: "light",
       splash: {
@@ -34,7 +35,23 @@ export default ({ config }) => {
       android: {
         ...(config.expo?.android || {}),
         package: "com.shambez.simbaglobalai",
-        versionCode: 1
+        versionCode: 1,
+        intentFilters: [
+          {
+            action: "VIEW",
+            data: [
+              {
+                scheme: "https",
+                host: "*.simbaglobalai.com",
+                pathPrefix: "/"
+              },
+              {
+                scheme: "simbaglobalai"
+              }
+            ],
+            category: ["BROWSABLE", "DEFAULT"]
+          }
+        ]
       },
       extra: {
         firebaseApiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
