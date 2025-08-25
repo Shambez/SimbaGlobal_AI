@@ -1,24 +1,12 @@
 {
   "expo": {
+    "name": "SimbaGlobal_AI",
+    "slug": "simbaglobalai",
+    "owner": "shambez",
     "extra": {
       "eas": {
-        "projectId": "de9cb649-4017-4978-93e7-89bf96e909d9"
+        "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
       }
-    },
-    "android": {
-      "package": "com.shambez.simbaglobal_ai"
-    },
-    "ios": {
-      "bundleIdentifier": "com.shambez.simbaglobal",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/de9cb649-4017-4978-93e7-89bf96e909d9"
     }
   }
 }
