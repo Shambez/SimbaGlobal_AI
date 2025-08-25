@@ -36,13 +36,39 @@ export default ({ config }) => {
         buildNumber: "1",
         associatedDomains: [
           "applinks:simbaglobalai.com"
-        ]
+        ],
+        infoPlist: {
+          NSMicrophoneUsageDescription:
+            "This app uses your microphone to allow you to talk to SimbaGlobal AI.",
+          NSCameraUsageDescription:
+            "This app may request camera access for visual features (future releases).",
+          NSLocationWhenInUseUsageDescription:
+            "This app may use your location for customized experiences.",
+          NSPhotoLibraryUsageDescription:
+            "This app may access your photo library for file upload features.",
+          NSBluetoothAlwaysUsageDescription:
+            "This app uses Bluetooth to connect to nearby devices (future optional features)."
+        }
       },
 
       android: {
         ...(config.expo?.android || {}),
         package: "com.shambez.simbaglobalai",
         versionCode: 1,
+        permissions: [
+          "INTERNET",
+          "RECORD_AUDIO",
+          "CAMERA",
+          "ACCESS_FINE_LOCATION",
+          "VIBRATE",
+          "WAKE_LOCK",
+          "FOREGROUND_SERVICE",
+          "READ_EXTERNAL_STORAGE",
+          "WRITE_EXTERNAL_STORAGE",
+          "BLUETOOTH",
+          "BLUETOOTH_ADMIN",
+          "POST_NOTIFICATIONS"
+        ],
         intentFilters: [
           {
             action: "VIEW",
