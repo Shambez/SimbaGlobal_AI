@@ -1,8 +1,1 @@
-{
-  "ignore_dirs": [
-    "ios/build",
-    "android/build",
-    ".git",
-    "node_modules/.cache"
-  ]
-}
+{}
