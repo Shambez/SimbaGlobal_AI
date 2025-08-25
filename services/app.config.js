@@ -1,6 +1,8 @@
 import 'dotenv/config';
 
 export default ({ config }) => {
+  const updateChannel = process.env.EAS_UPDATE_BRANCH || "production";
+
   return {
     ...config,
     expo: {
@@ -10,7 +12,7 @@ export default ({ config }) => {
       owner: "shambez",
       version: "1.0.0",
       orientation: "portrait",
-      scheme: "simbaglobalai", 
+      scheme: "simbaglobalai",
       icon: "./assets/simba_global_ai_icon.PNG",
       userInterfaceStyle: "light",
       splash: {
@@ -23,15 +25,20 @@ export default ({ config }) => {
       },
       updates: {
         fallbackToCacheTimeout: 0,
-        channel: process.env.EAS_UPDATE_BRANCH || "production"
+        channel: updateChannel
       },
       assetBundlePatterns: ["**/*"],
+
       ios: {
         ...(config.expo?.ios || {}),
         supportsTablet: true,
         bundleIdentifier: "com.shambez.simbaglobalai",
-        buildNumber: "1"
+        buildNumber: "1",
+        associatedDomains: [
+          "applinks:simbaglobalai.com"
+        ]
       },
+
       android: {
         ...(config.expo?.android || {}),
         package: "com.shambez.simbaglobalai",
@@ -42,7 +49,7 @@ export default ({ config }) => {
             data: [
               {
                 scheme: "https",
-                host: "*.simbaglobalai.com",
+                host: "simbaglobalai.com",
                 pathPrefix: "/"
               },
               {
@@ -53,13 +60,18 @@ export default ({ config }) => {
           }
         ]
       },
+
       extra: {
+        eas: {
+          projectId: "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+        },
         firebaseApiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
         firebaseProjectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
         stripePublicKey: process.env.EXPO_PUBLIC_STRIPE_PUBLIC_KEY,
         openAiKey: process.env.EXPO_PUBLIC_OPENAI_API_KEY,
         apiUrl: process.env.EXPO_PUBLIC_API_URL,
-        isProduction: process.env.EXPO_PUBLIC_IS_PRODUCTION === "true"
+        isProduction: process.env.EXPO_PUBLIC_IS_PRODUCTION === "true",
+        easUpdateBranch: updateChannel
       }
     }
   };
