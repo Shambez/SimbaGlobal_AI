@@ -7,9 +7,9 @@
     "orientation": "portrait",
     "scheme": "simbaglobalai",
     "userInterfaceStyle": "automatic",
-    "icon": "./assets/simba_global_ai_icon.PNG",
+    "icon": "./assets/simba_global_ai_icon.png",
     "splash": {
-      "image": "./assets/splash-simba_global_ai_icon.PNG",
+      "image": "./assets/splash-simba_global_ai_icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -48,7 +48,7 @@
         "INTERNET"
       ],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-simba_global_ai_icon.PNG",
+        "foregroundImage": "./assets/adaptive-simba_global_ai_icon.png",
         "backgroundColor": "#ffffff"
       }
     },
