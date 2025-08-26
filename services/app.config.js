@@ -34,9 +34,7 @@ export default ({ config }) => {
         supportsTablet: true,
         bundleIdentifier: "com.shambez.simbaglobalai",
         buildNumber: "1",
-        associatedDomains: [
-          "applinks:simbaglobalai.com"
-        ],
+        associatedDomains: ["applinks:simbaglobalai.com"],
         infoPlist: {
           NSMicrophoneUsageDescription:
             "This app uses your microphone to allow you to talk to SimbaGlobal AI.",
@@ -69,6 +67,10 @@ export default ({ config }) => {
           "BLUETOOTH_ADMIN",
           "POST_NOTIFICATIONS"
         ],
+        adaptiveIcon: {
+          foregroundImage: "./assets/adaptive-simba_global_ai_icon.PNG",
+          backgroundColor: "#ffffff"
+        },
         intentFilters: [
           {
             action: "VIEW",
@@ -86,6 +88,18 @@ export default ({ config }) => {
           }
         ]
       },
+
+      web: {
+        favicon: "./assets/favicon.png"
+      },
+
+      plugins: [
+        "expo-status-bar",
+        "expo-camera",
+        "expo-location",
+        "expo-splash-screen",
+        "expo-updates"
+      ],
 
       extra: {
         eas: {
