@@ -1,8 +1,19 @@
 {
   "expo": {
-    "name": "SimbaGlobal_AI",
+    "name": "SimbaGlobal AI",
     "slug": "simbaglobalai",
     "owner": "shambez",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "simbaglobalai",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/simba_global_ai_icon.PNG",
+    "splash": {
+      "image": "./assets/splash-simba_global_ai_icon.PNG",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
     "extra": {
       "eas": {
         "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
@@ -14,7 +25,42 @@
     "updates": {
       "url": "https://u.expo.dev/ba7d41e6-6081-4145-ad6e-86526cb1ff00"
     },
-    "android": {},
-    "ios": {}
+    "ios": {
+      "bundleIdentifier": "com.shambez.simbaglobalai",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs access to the camera for scanning and video.",
+        "NSMicrophoneUsageDescription": "This app needs access to the microphone for voice features.",
+        "NSLocationWhenInUseUsageDescription": "We use your location to personalize your experience.",
+        "NSUserTrackingUsageDescription": "This identifier is used to deliver personalized ads."
+      }
+    },
+    "android": {
+      "package": "com.shambez.simbaglobalai",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "VIBRATE",
+        "WAKE_LOCK",
+        "INTERNET"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-simba_global_ai_icon.PNG",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-camera",
+      "expo-location",
+      "expo-splash-screen",
+      "expo-status-bar",
+      "expo-updates"
+    ]
   }
 }
