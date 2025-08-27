@@ -94,7 +94,6 @@ export default ({ config }) => {
       },
 
       plugins: [
-        "expo-status-bar",
         "expo-camera",
         "expo-location",
         "expo-splash-screen",
