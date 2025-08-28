@@ -13,10 +13,10 @@ export default ({ config }) => {
       version: "1.0.0",
       orientation: "portrait",
       scheme: "simbaglobalai",
-      icon: "./assets/simba_global_ai_icon.png",
+      icon: "./assets/simba-global-ai-icon.png",
       userInterfaceStyle: "light",
       splash: {
-        image: "./assets/images/splash-simba_global_ai_icon.png",
+        image: "./assets/images/splash-simba-global-ai-icon.png",
         resizeMode: "contain",
         backgroundColor: "#ffffff"
       },
@@ -68,7 +68,7 @@ export default ({ config }) => {
           "POST_NOTIFICATIONS"
         ],
         adaptiveIcon: {
-          foregroundImage: "./assets/adaptive-simba_global_ai_icon.png",
+          foregroundImage: "./assets/adaptive-simba-global-ai-icon.png",
           backgroundColor: "#ffffff"
         },
         intentFilters: [
