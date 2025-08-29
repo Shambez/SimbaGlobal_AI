@@ -39,6 +39,7 @@
       }
     },
     "android": {
+      "edgeToEdgeEnabled": true,
       "package": "com.shambez.simbaglobalai",
       "permissions": [
         "CAMERA",

@@ -50,6 +50,7 @@ export default ({ config }) => {
       },
 
       android: {
+        "edgeToEdgeEnabled": true,
         ...(config.expo?.android || {}),
         package: "com.shambez.simbaglobalai",
         versionCode: 1,
