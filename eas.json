@@ -1,5 +1,6 @@
 {
   "cli": {
+    "version": ">= 3.13.0",
     "appVersionSource": "remote"
   },
   "build": {
@@ -20,12 +21,8 @@
     "preview": {
       "distribution": "internal",
       "developmentClient": true,
-      "ios": {
-        "simulator": false
-      },
-      "android": {
-        "buildType": "apk"
-      },
+      "ios": { "simulator": false },
+      "android": { "buildType": "apk" },
       "env": {
         "EAS_UPDATE_BRANCH": "preview",
         "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
@@ -38,12 +35,9 @@
       }
     },
     "production": {
-      "ios": {
-        "simulator": false
-      },
-      "android": {
-        "buildType": "app-bundle"
-      },
+      "distribution": "store",
+      "ios": { "simulator": false },
+      "android": { "buildType": "app-bundle" },
       "env": {
         "EAS_UPDATE_BRANCH": "production",
         "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
@@ -57,14 +51,10 @@
     }
   },
   "submit": {
-    "production": {},
     "preview": {
-      "android": {
-        "track": "internal"
-      },
-      "ios": {
-        "appleId": "shambez@gmail.com"
-      }
-    }
+      "android": { "track": "internal" },
+      "ios": { "appleId": "shambez@gmail.com" }
+    },
+    "production": {}
   }
 }
