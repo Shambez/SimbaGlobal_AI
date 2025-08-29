@@ -1,4 +1,3 @@
-// components/VoiceChatButton.tsx
 import React from "react";
 import { TouchableOpacity, Image, StyleSheet } from "react-native";
 import { speakAsMufasa } from "../lib/speech";
@@ -27,11 +26,11 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 20
   },
   icon: {
     width: 60,
     height: 60,
-    resizeMode: "contain",
-  },
+    resizeMode: "contain"
+  }
 });

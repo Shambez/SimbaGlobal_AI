@@ -1,9 +1,11 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { SafeAreaView, Text, View } from "react-native";
+import ChatScreen from "../screens/ChatScreen";
 
-export default function Home() {
+export default function App() {
   return (
-    <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
-      <Text style={{fontSize:22}}>SimbaGlobal AI — Hello 👋🏾</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ChatScreen />
+    </SafeAreaView>
   );
 }

@@ -13,14 +13,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
-      }
-    },
+    "assetBundlePatterns": ["**/*"],
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -49,11 +42,7 @@
         "WRITE_EXTERNAL_STORAGE",
         "VIBRATE",
         "WAKE_LOCK",
-        "INTERNET",
-        "android.permission.CAMERA",
-        "android.permission.RECORD_AUDIO",
-        "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION"
+        "INTERNET"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-simba-global-ai-icon.png",
@@ -62,6 +51,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+      }
     },
     "plugins": [
       "expo-camera",
