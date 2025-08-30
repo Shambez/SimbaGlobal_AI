@@ -1,53 +1,65 @@
-
-import { useEffect, useRef, useState } from 'react';
-import { View, TextInput, StyleSheet, Text, FlatList, Pressable, Keyboard } from 'react-native';
-import * as Speech from 'expo-speech';
-import LottieView from 'lottie-react-native';
+import React, { useEffect, useState } from "react";
+import { View, Text, TextInput, FlatList, Pressable, StyleSheet } from "react-native";
+import { playMufasa } from "@/lib/useMufasaVoice";
+import { generateMufasaReply } from "@/lib/openaiVoice"; // 👈🏾 New helper we’ll create
 
 export default function ChatScreen() {
-  const [messages, setMessages] = useState([{ id: '1', text: 'Hello there. I\'m here to assist you, talk to me or text me, my name is Simba, SimbaGlobal AI. Hyena Free Chat ?' }]);
-  const [input, setInput] = useState('');
-  const lionRef = useRef(null);
+  const [messages, setMessages] = useState<{ id: string; text: string; from: "user" | "ai" }[]>([]);
+  const [input, setInput] = useState("");
 
+  // 🔊 Play intro when chat opens
   useEffect(() => {
-    Speech.speak('Hello Babu. Ready to talk?', {
-      voice: 'com.apple.ttsbundle.MufasaVoice', // Example only — must map correctly in real
-    });
+    playMufasa(require("../../assets/audio/mufasa_chat_open.mp3"));
   }, []);
 
-  const sendMessage = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
-    const userMsg = { id: Date.now().toString(), text: input.trim() };
-    const aiMsg = { id: (Date.now() + 1).toString(), text: `You said: ${input.trim()}` };
-    setMessages((prev) => [...prev, userMsg, aiMsg]);
-    Speech.speak(aiMsg.text);
-    setInput('');
-    Keyboard.dismiss();
+
+    const userMsg = { id: Date.now().toString(), text: input, from: "user" };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+
+    try {
+      // 👉🏾 Call OpenAI for reply + voice
+      const aiText = await generateMufasaReply(input);
+
+      const aiReply = {
+        id: (Date.now() + 1).toString(),
+        text: aiText,
+        from: "ai" as const,
+      };
+
+      setMessages((prev) => [...prev, aiReply]);
+
+      // 🎤 Play back Mufasa’s generated voice
+      playMufasa(undefined, aiText); // undefined = no static file, pass text to TTS
+    } catch (err) {
+      console.error("AI reply failed:", err);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <LottieView
-        ref={lionRef}
-        source={require('../../assets/lion-glow-mouth.json')}
-        autoPlay
-        loop
-        style={{ width: 150, height: 150 }}
-      />
       <FlatList
         data={messages}
-        renderItem={({ item }) => <Text style={styles.message}>{item.text}</Text>}
         keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Text style={item.from === "user" ? styles.user : styles.ai}>
+            {item.text}
+          </Text>
+        )}
+        style={styles.chat}
       />
-      <View style={styles.inputArea}>
+
+      <View style={styles.inputRow}>
         <TextInput
           style={styles.input}
+          placeholder="Type here..."
           value={input}
           onChangeText={setInput}
-          placeholder="Talk to SimbaGlobal..."
         />
-        <Pressable style={styles.sendButton} onPress={sendMessage}>
-          <Text style={{ color: 'white' }}>Send</Text>
+        <Pressable style={styles.sendButton} onPress={handleSend}>
+          <Text style={styles.sendText}>➤</Text>
         </Pressable>
       </View>
     </View>
@@ -55,9 +67,12 @@ export default function ChatScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
-  message: { fontSize: 16, marginVertical: 5 },
-  inputArea: { flexDirection: 'row', marginTop: 10 },
-  input: { flex: 1, borderWidth: 1, borderColor: '#ccc', padding: 10, borderRadius: 10 },
-  sendButton: { backgroundColor: '#333', padding: 10, marginLeft: 10, borderRadius: 10 },
+  container: { flex: 1, backgroundColor: "#fff", padding: 10 },
+  chat: { flex: 1 },
+  user: { alignSelf: "flex-end", backgroundColor: "#d1e7ff", padding: 8, borderRadius: 6, marginVertical: 4 },
+  ai: { alignSelf: "flex-start", backgroundColor: "#f4f4f4", padding: 8, borderRadius: 6, marginVertical: 4 },
+  inputRow: { flexDirection: "row", alignItems: "center" },
+  input: { flex: 1, borderWidth: 1, borderColor: "#ccc", padding: 8, borderRadius: 6 },
+  sendButton: { marginLeft: 8, backgroundColor: "#333", padding: 10, borderRadius: 6 },
+  sendText: { color: "#fff" },
 });
