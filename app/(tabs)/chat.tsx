@@ -1,84 +1,63 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import * as Speech from "expo-speech";
-import { useFocusEffect } from "@react-navigation/native";
-import LottieView from "lottie-react-native";
-import VoiceChatButton from "../../components/VoiceChatButton";
+
+import { useEffect, useRef, useState } from 'react';
+import { View, TextInput, StyleSheet, Text, FlatList, Pressable, Keyboard } from 'react-native';
+import * as Speech from 'expo-speech';
+import LottieView from 'lottie-react-native';
 
 export default function ChatScreen() {
-  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [messages, setMessages] = useState([{ id: '1', text: 'Hello there. I'm here to assist you, talk to me or text me ?' }]);
+  const [input, setInput] = useState('');
+  const lionRef = useRef(null);
 
-  // Manage speaking state
   useEffect(() => {
-    const subscription = Speech.addListener({
-      onStart: () => setIsSpeaking(true),
-      onDone: () => setIsSpeaking(false),
-      onStopped: () => setIsSpeaking(false),
-      onError: () => setIsSpeaking(false),
+    Speech.speak('Hello Babu. Ready to talk?', {
+      voice: 'com.apple.ttsbundle.MufasaVoice', // Example only — must map correctly in real
     });
-
-    return () => subscription.remove();
   }, []);
 
-  // Trigger SimbaGlobal intro every time screen opens
-  useFocusEffect(
-    React.useCallback(() => {
-      const timer = setTimeout(() => {
-        Speech.speak(
-          "Hi, I am SimbaGlobal — your AI. How can I assist you today?",
-          {
-            language: "en-US",
-            pitch: 0.4,   // deeper like Mufasa
-            rate: 0.75,   // slower, dramatic
-          }
-        );
-      }, 1000); // 1 second delay
-
-      return () => clearTimeout(timer);
-    }, [])
-  );
+  const sendMessage = () => {
+    if (!input.trim()) return;
+    const userMsg = { id: Date.now().toString(), text: input.trim() };
+    const aiMsg = { id: (Date.now() + 1).toString(), text: `You said: ${input.trim()}` };
+    setMessages((prev) => [...prev, userMsg, aiMsg]);
+    Speech.speak(aiMsg.text);
+    setInput('');
+    Keyboard.dismiss();
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>SimbaGlobal AI Chat</Text>
-
-      {isSpeaking ? (
-        <LottieView
-          source={require("../../assets/animations/lion-glow-mouth.json")}
-          autoPlay
-          loop
-          style={styles.lion}
+      <LottieView
+        ref={lionRef}
+        source={require('../../assets/lion_talk.json')}
+        autoPlay
+        loop
+        style={{ width: 150, height: 150 }}
+      />
+      <FlatList
+        data={messages}
+        renderItem={({ item }) => <Text style={styles.message}>{item.text}</Text>}
+        keyExtractor={(item) => item.id}
+      />
+      <View style={styles.inputArea}>
+        <TextInput
+          style={styles.input}
+          value={input}
+          onChangeText={setInput}
+          placeholder="Talk to Simba..."
         />
-      ) : (
-        <Image
-          source={require("../../assets/images/lion.png")}
-          style={styles.lion}
-        />
-      )}
-
-      <VoiceChatButton />
+        <Pressable style={styles.sendButton} onPress={sendMessage}>
+          <Text style={{ color: 'white' }}>Send</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  heading: {
-    fontSize: 20,
-    fontWeight: "600",
-    marginBottom: 12,
-    textAlign: "center",
-  },
-  lion: {
-    width: 160,
-    height: 160,
-    marginBottom: 20,
-    resizeMode: "contain",
-  },
+  container: { flex: 1, padding: 20 },
+  message: { fontSize: 16, marginVertical: 5 },
+  inputArea: { flexDirection: 'row', marginTop: 10 },
+  input: { flex: 1, borderWidth: 1, borderColor: '#ccc', padding: 10, borderRadius: 10 },
+  sendButton: { backgroundColor: '#333', padding: 10, marginLeft: 10, borderRadius: 10 },
 });
