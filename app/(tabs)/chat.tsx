@@ -5,7 +5,7 @@ import * as Speech from 'expo-speech';
 import LottieView from 'lottie-react-native';
 
 export default function ChatScreen() {
-  const [messages, setMessages] = useState([{ id: '1', text: 'Hello there. I'm here to assist you, talk to me or text me ?' }]);
+  const [messages, setMessages] = useState([{ id: '1', text: 'Hello there. I\'m here to assist you, talk to me or text me, my name is Simba, SimbaGlobal AI. Hyena Free Chat ?' }]);
   const [input, setInput] = useState('');
   const lionRef = useRef(null);
 
@@ -29,7 +29,7 @@ export default function ChatScreen() {
     <View style={styles.container}>
       <LottieView
         ref={lionRef}
-        source={require('../../assets/lion_talk.json')}
+        source={require('../../assets/lion-glow-mouth.json')}
         autoPlay
         loop
         style={{ width: 150, height: 150 }}
@@ -44,7 +44,7 @@ export default function ChatScreen() {
           style={styles.input}
           value={input}
           onChangeText={setInput}
-          placeholder="Talk to Simba..."
+          placeholder="Talk to SimbaGlobal..."
         />
         <Pressable style={styles.sendButton} onPress={sendMessage}>
           <Text style={{ color: 'white' }}>Send</Text>
