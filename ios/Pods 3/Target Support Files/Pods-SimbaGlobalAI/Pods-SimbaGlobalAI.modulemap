@@ -1,6 +1,0 @@
-module Pods_SimbaGlobalAI {
-  umbrella header "Pods-SimbaGlobalAI-umbrella.h"
-
-  export *
-  module * { export * }
-}
