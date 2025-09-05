@@ -2,12 +2,12 @@
   "expo": {
     "name": "SimbaGlobal_AI",
     "slug": "simbaglobalai",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/simba-global-ai-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-simba-global-ai-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,11 +24,11 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
-      "buildNumber": "12"
+      "buildNumber": "13"
     },
     "android": {
       "package": "com.shambez.simbaglobalai",
-      "versionCode": 12
+      "versionCode": 13
     },
     "extra": {
       "eas": {
