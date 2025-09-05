@@ -1,4 +1,42 @@
 {
+  "expo": {
+    "name": "SimbaGlobal_AI",
+    "slug": "simbaglobalai",
+    "version": "1.0.8",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shambez.simbaglobalai",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "buildNumber": "8"
+    },
+    "android": {
+      "package": "com.shambez.simbaglobalai",
+      "versionCode": 8
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+      }
+    },
+    "runtimeVersion": "1.0.0"
+  },
   "cli": {
     "appVersionSource": "remote"
   },
@@ -51,25 +89,5 @@
   },
   "submit": {
     "production": {}
-  },
-  "extra": {
-    "eas": {
-      "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
-    }
-  },
-  "owner": "shambez",
-  "slug": "simbaglobalai",
-  "runtimeVersion": "1.0.0",
-  "updates": {
-    "url": "https://u.expo.dev/ba7d41e6-6081-4145-ad6e-86526cb1ff00"
-  },
-  "android": {
-    "package": "com.shambez.simbaglobalai"
-  },
-  "ios": {
-    "bundleIdentifier": "com.shambez.simbaglobalai",
-    "infoPlist": {
-      "ITSAppUsesNonExemptEncryption": false
-    }
   }
 }

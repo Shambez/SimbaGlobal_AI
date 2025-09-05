@@ -1,0 +1,75 @@
+{
+  "cli": {
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "developmentClient": true,
+      "env": {
+        "EAS_UPDATE_BRANCH": "development",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "false"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EAS_UPDATE_BRANCH": "preview",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "false"
+      }
+    },
+    "production": {
+      "ios": {
+        "simulator": false
+      },
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EAS_UPDATE_BRANCH": "production",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "@env(EXPO_PUBLIC_FIREBASE_API_KEY)",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "@env(EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN)",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "@env(EXPO_PUBLIC_FIREBASE_PROJECT_ID)",
+        "EXPO_PUBLIC_STRIPE_PUBLIC_KEY": "@env(EXPO_PUBLIC_STRIPE_PUBLIC_KEY)",
+        "EXPO_PUBLIC_OPENAI_API_KEY": "@env(EXPO_PUBLIC_OPENAI_API_KEY)",
+        "EXPO_PUBLIC_API_URL": "@env(EXPO_PUBLIC_API_URL)",
+        "EXPO_PUBLIC_IS_PRODUCTION": "true"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  },
+  "extra": {
+    "eas": {
+      "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+    }
+  },
+  "owner": "shambez",
+  "slug": "simbaglobalai",
+  "runtimeVersion": "1.0.0",
+  "updates": {
+    "url": "https://u.expo.dev/ba7d41e6-6081-4145-ad6e-86526cb1ff00"
+  },
+  "android": {
+    "package": "com.shambez.simbaglobalai"
+  },
+  "ios": {
+    "bundleIdentifier": "com.shambez.simbaglobalai",
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false
+    }
+  }
+}
