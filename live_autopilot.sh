@@ -1,11 +1,11 @@
 #!/bin/zsh
 set -e
 
-COMMIT_MSG="chore: SimbaGlobal_AI autopilot sync + GPT5 integration + builds"
+COMMIT_MSG="SimbaGlobal AI: GPT-5 autopilot sync, build, deploy"
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-echo "🚀 Starting SimbaGlobal AI Autopilot..."
+echo "Starting SimbaGlobal AI Autopilot with GPT-5 integration..."
 
 node -e '
 const fs = require("fs");
@@ -21,8 +21,8 @@ fs.writeFileSync("app.json", JSON.stringify(app, null, 2));
 '
 
 git fetch --all --prune
-git add .
-git commit -m "$COMMIT_MSG" || echo "✅ Nothing new to commit"
+git add -A
+git commit -m "$COMMIT_MSG" || echo "Nothing new to commit"
 git pull origin $CURRENT_BRANCH --rebase
 git push origin $CURRENT_BRANCH
 
@@ -35,28 +35,35 @@ done
 
 git checkout $CURRENT_BRANCH
 
+echo "Cleaning dependency caches..."
 rm -rf node_modules .expo .expo-shared
 watchman watch-del-all || true
 npm install
 
-npx expo prebuild --clean
+echo "Running Expo prebuild..."
+npx expo prebuild --clean --non-interactive
 
-eas update --branch development --message "OTA: SimbaGlobal AI sync + GPT5 integration"
-eas update --branch preview --message "OTA: SimbaGlobal AI sync + GPT5 integration"
-eas update --branch production --message "OTA: SimbaGlobal AI sync + GPT5 integration"
+echo "Publishing OTA updates..."
+eas update --branch development --message "OTA: SimbaGlobal AI + GPT-5 integration"
+eas update --branch preview --message "OTA: SimbaGlobal AI + GPT-5 integration"
+eas update --branch production --message "OTA: SimbaGlobal AI + GPT-5 integration"
 
-npx eas build --platform ios --profile preview
-npx eas build --platform android --profile preview
+echo "Building fresh apps..."
+npx eas build --platform ios --profile preview --non-interactive --clear-cache
+npx eas build --platform android --profile preview --non-interactive --clear-cache
 
+echo "Submitting to app stores..."
 eas submit -p ios --latest --profile production
 eas submit -p android --latest --profile production
 
+echo "Exporting web build..."
 npx expo export:web
 
+echo "Sending Firebase push notification..."
 curl -X POST \
   -H "Authorization: key=$FIREBASE_SERVER_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"to":"/topics/all","notification":{"title":"SimbaGlobal AI Updated","body":"🔥 GPT-5 update is live. Open the app now."}}' \
+  -d '{"to":"/topics/all","notification":{"title":"SimbaGlobal AI Updated","body":"GPT-5 update is live. Open the app now."}}' \
   https://fcm.googleapis.com/fcm/send
 
-echo "🎉 SimbaGlobal AI Autopilot finished successfully!"
+echo "SimbaGlobal AI Autopilot finished successfully."
