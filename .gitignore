@@ -1,40 +1,25 @@
-# Dependencies
+.DS_Store
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock*.json
-
-# Expo
 .expo/
 .expo-shared/
 dist/
 web-build/
 *.expo*
 *.packager
-
-# Environment variables
 .env
 .env.*
 env.json
 env.local
-
-# Credentials
 credentials.json
-*.pem
-
-# IDE
 .idea/
 .vscode/
 *.iml
-
-# Python virtual env
 .venv/
-
-# Node version
 .nvmrc
-
-# iOS
 ios/build/
 ios/Pods/
 *.xcuserstate
@@ -44,36 +29,16 @@ ios/Pods/
 *.xcsettings
 *.xcodeproj/project.xcworkspace/xcuserdata/
 DerivedData/
-
-# Android
 android/.gradle/
 android/app/build/
 *.apk
 *.keystore
 *.jks
-
-# Archives
 *.tar.gz
 *.tgz
 *.zip
 *.ipa
 *.aab
-
-# Backup files
 *.bak
-
-# OS generated files
-.DS_Store
 *~
 Thumbs.db
-
-# Scripts and utilities (keep these local only)
-*autopilot*.sh
-fix-*.sh
-simbaAutopilotHelper.ts.sh
-simba_autopilot_workaround.sh
-
-# Downloaded HTML files and exports
-Project\ environment\ variables*
-*export*.html
-*export*_files/
