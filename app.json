@@ -2,7 +2,7 @@
   "expo": {
     "name": "SimbaGlobal_AI",
     "slug": "simbaglobalai",
-    "version": "1.0.21",
+    "version": "1.0.22",
     "orientation": "portrait",
     "scheme": "simbaglobalai",
     "icon": "./assets/simba-global-ai-icon.png",
@@ -47,14 +47,14 @@
           "simbaglobalai"
         ]
       },
-      "buildNumber": "21",
+      "buildNumber": "22",
       "config": {
         "usesNonExemptEncryption": false
       }
     },
     "android": {
       "package": "com.shambez.simbaglobalai",
-      "versionCode": 21,
+      "versionCode": 22,
       "permissions": [
         "INTERNET",
         "RECORD_AUDIO",
@@ -83,7 +83,6 @@
     "plugins": [
       "expo-audio",
       "expo-router",
-      "expo-haptics",
       "expo-constants",
       [
         "expo-dev-client",
