@@ -35,7 +35,10 @@
         "projectId": "ba7d41e6-6081-4145-ad6e-86526cb1ff00"
       }
     },
-    "runtimeVersion": "1.0.0"
+    "runtimeVersion": "1.0.0",
+    "plugins": [
+      "expo-audio"
+    ]
   },
   "cli": {
     "appVersionSource": "remote"
