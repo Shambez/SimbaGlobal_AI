@@ -2,12 +2,10 @@
 set -e
 
 echo "
-Warp Autopilot Instructions:
-- Do not delete or overwrite any working assets (icons, splash, lion imoji, mp3 files). Only fix paths if broken.
-- All routing and GPT-5 integration must remain intact.
-- Fix only broken or missing files, never downgrade or remove working code.
-- Every update must propagate live across Git, Expo, EAS, iOS, Android, and Web.
-- End users must always get the latest build in real time when opening the app.
+SimbaGlobal AI Autopilot:
+All builds are live and interactive (GPT-5 + Mufasa voice).
+Every execution deploys across Git, Expo, EAS, iOS, Android, Web.
+End users always get the latest build instantly.
 "
 
 retry() {
@@ -28,11 +26,11 @@ retry() {
   done
 }
 
-COMMIT_MSG="SimbaGlobal AI: GPT-5 autopilot sync, build, deploy"
+COMMIT_MSG="SimbaGlobal AI: GPT-5 autopilot live build & deploy"
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-echo "🚀 Starting SimbaGlobal AI Autopilot..."
+echo "🚀 Starting SimbaGlobal AI LIVE Autopilot..."
 
 node -e '
 const fs = require("fs");
@@ -68,22 +66,22 @@ retry npm install
 
 retry npx expo prebuild --clean
 
-retry eas update --branch development --message "OTA: SimbaGlobal AI + GPT-5 sync"
-retry eas update --branch preview --message "OTA: SimbaGlobal AI + GPT-5 sync"
-retry eas update --branch production --message "OTA: SimbaGlobal AI + GPT-5 sync"
+retry eas update --branch development --message "OTA: SimbaGlobal AI + GPT-5 live sync"
+retry eas update --branch preview --message "OTA: SimbaGlobal AI + GPT-5 live sync"
+retry eas update --branch production --message "OTA: SimbaGlobal AI + GPT-5 live sync"
 
-retry npx eas build --platform ios --profile preview
-retry npx eas build --platform android --profile preview
+retry npx eas build --platform ios --profile preview --interactive
+retry npx eas build --platform android --profile preview --interactive
 
-retry eas submit -p ios --latest --profile production
-retry eas submit -p android --latest --profile production
+retry eas submit -p ios --latest --profile production --interactive
+retry eas submit -p android --latest --profile production --interactive
 
 retry npx expo export:web
 
 curl -X POST \
   -H "Authorization: key=$FIREBASE_SERVER_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"to":"/topics/all","notification":{"title":"SimbaGlobal AI Updated","body":"🔥 GPT-5 update is live. Open the app now."}}' \
+  -d '{"to":"/topics/all","notification":{"title":"SimbaGlobal AI Updated","body":"🔥 GPT-5 live update is now available. Open the app!"}}' \
   https://fcm.googleapis.com/fcm/send
 
-echo "🎉 SimbaGlobal AI Autopilot finished successfully with GPT-5 integration!"
+echo "🎉 SimbaGlobal AI Autopilot finished successfully — live GPT-5 build deployed everywhere!"

@@ -2,7 +2,7 @@
   "expo": {
     "name": "SimbaGlobal_AI",
     "slug": "simbaglobalai",
-    "version": "1.0.20",
+    "version": "1.0.21",
     "orientation": "portrait",
     "scheme": "simbaglobalai",
     "icon": "./assets/simba-global-ai-icon.png",
@@ -47,14 +47,14 @@
           "simbaglobalai"
         ]
       },
-      "buildNumber": "20",
+      "buildNumber": "21",
       "config": {
         "usesNonExemptEncryption": false
       }
     },
     "android": {
       "package": "com.shambez.simbaglobalai",
-      "versionCode": 20,
+      "versionCode": 21,
       "permissions": [
         "INTERNET",
         "RECORD_AUDIO",
