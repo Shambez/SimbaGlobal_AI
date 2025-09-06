@@ -2,7 +2,7 @@
   "expo": {
     "name": "SimbaGlobal_AI",
     "slug": "simbaglobalai",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "orientation": "portrait",
     "icon": "./assets/simba-global-ai-icon.png",
     "userInterfaceStyle": "light",
@@ -24,11 +24,11 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
-      "buildNumber": "18"
+      "buildNumber": "19"
     },
     "android": {
       "package": "com.shambez.simbaglobalai",
-      "versionCode": 18
+      "versionCode": 19
     },
     "extra": {
       "eas": {
