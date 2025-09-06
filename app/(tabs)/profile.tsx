@@ -4,14 +4,14 @@ import * as Haptics from "expo-haptics";
 import { playSimbaTTS } from "@/lib/useSimbaVoice";
 import { simbaAutopilotHelper } from "@/lib/simbaAutopilotHelper";
 
-export default function HomeScreen() {
+export default function ProfileScreen() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState("");
 
   const handleHelp = async () => {
     if (!query.trim()) return;
     Haptics.selectionAsync();
-    playSimbaTTS("Let me think...");
+    playSimbaTTS("I’m here to assist.");
     const reply = await simbaAutopilotHelper(query);
     setResponse(reply);
     playSimbaTTS(reply);
@@ -19,19 +19,18 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.header}>🏠 Welcome to SimbaGlobal AI</Text>
-      <Text style={styles.subheader}>Your GPT-5 powered assistant at your service.</Text>
+      <Text style={styles.header}>👤 Profile & Settings</Text>
 
       <Text style={styles.sectionHeader}>✨ Help & Support</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Type your question..."
+        placeholder="Ask SimbaGlobal AI anything about your account..."
         value={query}
         onChangeText={setQuery}
       />
       <Pressable style={styles.button} onPress={handleHelp}>
-        <Text style={styles.buttonText}>Ask SimbaGlobal AI</Text>
+        <Text style={styles.buttonText}>Ask for Help</Text>
       </Pressable>
 
       {response ? (
@@ -46,13 +45,12 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: "#fff" },
-  header: { fontSize: 28, fontWeight: "bold", textAlign: "center", marginBottom: 10 },
-  subheader: { fontSize: 16, textAlign: "center", marginBottom: 20, color: "#555" },
+  header: { fontSize: 26, fontWeight: "bold", marginBottom: 20 },
   sectionHeader: { fontSize: 20, fontWeight: "600", marginBottom: 10 },
   input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 10, padding: 10, marginBottom: 10 },
-  button: { backgroundColor: "#333", padding: 14, borderRadius: 10, alignItems: "center" },
+  button: { backgroundColor: "#0066cc", padding: 14, borderRadius: 10, alignItems: "center" },
   buttonText: { color: "white", fontSize: 16, fontWeight: "600" },
-  responseBox: { marginTop: 20, padding: 15, backgroundColor: "#f5f5f5", borderRadius: 10 },
+  responseBox: { marginTop: 20, padding: 15, backgroundColor: "#f9f9f9", borderRadius: 10 },
   responseTitle: { fontWeight: "bold", marginBottom: 5 },
   responseText: { fontSize: 16 },
 });
