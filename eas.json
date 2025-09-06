@@ -58,8 +58,7 @@
       "ios": {
         "simulator": false,
         "buildConfiguration": "Release",
-        "scheme": "SimbaGlobalAI",
-        "projectPath": "ios/SimbaGlobalAI.xcworkspace"
+        "scheme": "SimbaGlobalAI"
       },
       "env": {
         "EAS_UPDATE_BRANCH": "production",
@@ -87,8 +86,7 @@
     "production": {
       "ios": {
         "simulator": false,
-        "scheme": "SimbaGlobalAI",
-        "projectPath": "ios/SimbaGlobalAI.xcworkspace"
+        "scheme": "SimbaGlobalAI"
       },
       "android": {
         "buildType": "app-bundle"
