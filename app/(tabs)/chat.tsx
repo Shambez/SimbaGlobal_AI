@@ -11,14 +11,16 @@ export default function ChatScreen() {
           conversationId="main-chat"
           initialPersonality="smart"
           showSpecialistSuggestions={true}
-          enableStreaming={false}
+          enableStreaming={true}
           theme="light"
           onMessageSent={(message) => {
             console.log('🦁 User message:', message.text);
+            console.log('📱 Chat fully interactive with GPT-5 streaming');
           }}
           onResponseReceived={(message) => {
-            console.log('🤖 GPT-5 response:', message.text);
+            console.log('🤖 GPT-5 streaming response:', message.text);
             console.log('🎯 Specialist used:', message.specialist);
+            console.log('✨ Interactive chat experience enhanced');
           }}
         />
       </View>
