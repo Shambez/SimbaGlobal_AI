@@ -1,7 +1,7 @@
 {
   "name": "SimbaGlobal_AI",
   "main": "expo-router/entry",
-  "version": "1.0.0",
+  "version": "1.0.19",
   "scripts": {
     "start": "expo start --dev-client",
     "reset-project": "node ./scripts/reset-project.js",
@@ -27,6 +27,7 @@
     "expo-constants": "~17.1.7",
     "expo-dev-client": "^5.2.4",
     "expo-env": "^1.1.1",
+    "expo-file-system": "~18.1.10",
     "expo-font": "~13.3.2",
     "expo-haptics": "~14.1.4",
     "expo-image": "~2.3.2",

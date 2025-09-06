@@ -33,7 +33,7 @@ export default function HomeTab() {
     }
   };
 
-  const askGpt5 = async (prompt: string) => {
+  const askGPT5 = async (prompt: string) => {
     try {
       const reply = await generateSimbaReply(prompt);
       if (reply) playSimbaTTS(reply);
@@ -53,7 +53,7 @@ export default function HomeTab() {
         </Text>
         <Pressable
           style={({ pressed }) => [styles.primaryBtn, pressed && styles.pressed]}
-          onPress={() => askGpt5("Introduce yourself to the user in one friendly sentence.")}
+          onPress={() => askGPT5("Introduce yourself to the user in one friendly sentence.")}
         >
           <Text style={styles.primaryBtnText}>Say Hello</Text>
         </Pressable>

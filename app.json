@@ -4,6 +4,7 @@
     "slug": "simbaglobalai",
     "version": "1.0.19",
     "orientation": "portrait",
+    "scheme": "simbaglobalai",
     "icon": "./assets/simba-global-ai-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -22,7 +23,12 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.shambez.simbaglobalai",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSMicrophoneUsageDescription": "This app uses your microphone to talk with SimbaGlobal AI.",
+        "NSCameraUsageDescription": "This app may request camera access for uploads.",
+        "NSLocationWhenInUseUsageDescription": "This app may use location for features.",
+        "NSPhotoLibraryUsageDescription": "This app may access your photos for uploads.",
+        "UIBackgroundModes": ["audio", "fetch"]
       },
       "buildNumber": "19"
     },
@@ -37,7 +43,8 @@
     },
     "runtimeVersion": "1.0.0",
     "plugins": [
-      "expo-audio"
+      "expo-audio",
+      "expo-router"
     ]
   },
   "cli": {
