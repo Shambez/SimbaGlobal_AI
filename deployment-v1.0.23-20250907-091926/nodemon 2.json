@@ -1,5 +1,0 @@
-{
-  "watch": ["App.js", "screens/", "components/"],
-  "exec": "./dev.sh",
-  "ext": "js,json,ts,tsx"
-}
