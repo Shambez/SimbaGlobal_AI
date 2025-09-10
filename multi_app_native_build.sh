@@ -14,10 +14,29 @@ fi
 APP_NAME=$(basename "$PWD")
 if [[ "$APP_NAME" == "Desktop" ]]; then
   echo "⚡ Running from Desktop — choose app to autopilot:"
-  select APP_CHOICE in "SimbaGlobal_AI" "Ad_On_Mute"; do
-    APP_NAME="$APP_CHOICE"
-    cd ~/Desktop/$APP_NAME
-    break
+  select APP_CHOICE in "SimbaGlobal_AI" "Shambez_Ad_On_Mute_App_v13_6_PlugAndPlay" "Both_Sequential" "Both_Parallel"; do
+    if [[ "$APP_CHOICE" == "Both_Sequential" ]]; then
+      echo "🚀 Running autopilot for BOTH apps (sequential)..."
+      cd ~/Desktop/SimbaGlobal_AI
+      "$0" $1
+      cd ~/Desktop/Shambez_Ad_On_Mute_App_v13_6_PlugAndPlay
+      "$0" $1
+      exit 0
+    elif [[ "$APP_CHOICE" == "Both_Parallel" ]]; then
+      echo "🚀 Running autopilot for BOTH apps (parallel)..."
+      ssh warp-server "mkdir -p ~/deploy/logs"
+      (cd ~/Desktop/SimbaGlobal_AI && "$0" $1) > >(ssh warp-server "tee -a ~/deploy/logs/warp_simbaglobal_ai.log") 2>&1 &
+      (cd ~/Desktop/Shambez_Ad_On_Mute_App_v13_6_PlugAndPlay && "$0" $1) > >(ssh warp-server "tee -a ~/deploy/logs/warp_shambez_ad_on_mute_app_v13_6_plugandplay.log") 2>&1 &
+      wait
+      echo "✅ Parallel builds finished. Logs:"
+      echo "   SimbaGlobal_AI: warp-server:~/deploy/logs/warp_simbaglobal_ai.log"
+      echo "   Shambez_Ad_On_Mute_App_v13_6_PlugAndPlay: warp-server:~/deploy/logs/warp_shambez_ad_on_mute_app_v13_6_plugandplay.log"
+      exit 0
+    else
+      APP_NAME="$APP_CHOICE"
+      cd ~/Desktop/$APP_NAME
+      break
+    fi
   done
 fi
 
@@ -102,6 +121,11 @@ fi
 
 if [ "$LOOP_MODE" = false ]; then
   echo "⚡ Starting background Warp autopilot on server..."
-  ssh warp-server "cd ~/deploy/$APP_NAME && nohup warp ./multi_app_native_build.sh --loop >> warp_autopilot.log 2>&1 &"
-  echo "✅ Background Warp autopilot started on server."
+  if [[ "$APP_NAME" == "SimbaGlobal_AI" ]]; then
+    LOG_NAME="warp_simbaglobal_ai.log"
+  else
+    LOG_NAME="warp_shambez_ad_on_mute_app_v13_6_plugandplay.log"
+  fi
+  ssh warp-server "cd ~/deploy/$APP_NAME && mkdir -p ~/deploy/logs && nohup warp ./multi_app_native_build.sh --loop >> ~/deploy/logs/$LOG_NAME 2>&1 &"
+  echo "✅ Background Warp autopilot started on server. Log: ~/deploy/logs/$LOG_NAME"
 fi

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
+import * as Haptics from 'react-native-haptic-feedback';
 import { 
   simbaTalk, 
   SimbaVoiceSpecialists, 

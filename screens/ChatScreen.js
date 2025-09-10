@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, Button, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
-import * as Speech from 'expo-speech';
+import * as Speech from 'react-native-tts';
 import LiveLogoPopup from '../components/LiveLogoPopup';
 
 const ChatScreen = () => {

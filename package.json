@@ -47,9 +47,11 @@
     "react-dom": "19.0.0",
     "react-native": "0.79.5",
     "react-native-gesture-handler": "~2.24.0",
+    "react-native-haptic-feedback": "^2.3.3",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
+    "react-native-tts": "^4.1.1",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "supports-hyperlinks": "^4.1.2"
