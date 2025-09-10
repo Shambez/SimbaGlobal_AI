@@ -1,6 +1,6 @@
 {
   "name": "SimbaGlobal_AI",
-  "main": "expo-router/entry",
+  "main": "index.js",
   "version": "1.0.19",
   "scripts": {
     "start": "expo start --dev-client",

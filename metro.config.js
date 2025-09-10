@@ -4,4 +4,7 @@ const { getDefaultConfig } = require('expo/metro-config');
 /** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname);
 
+// Add TypeScript support
+config.resolver.sourceExts.push('ts', 'tsx');
+
 module.exports = config;

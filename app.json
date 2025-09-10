@@ -82,8 +82,6 @@
     "runtimeVersion": "1.0.0",
     "plugins": [
       "expo-audio",
-      "expo-router",
-      "expo-constants",
       [
         "expo-dev-client",
         {

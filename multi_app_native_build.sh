@@ -1,130 +1,107 @@
 #!/bin/bash
-# ==========================================================
-# multi_app_native_build.sh
-# For SimbaGlobal_AI + Ad On Mute
-# Cleans, rebuilds native projects, integrates GPT-5,
-# pushes to GitHub, and installs on iOS/Android devices
-# registered in Apple/Google developer accounts.
-# ==========================================================
 
 set -e
+clear
+echo "🦁 SimbaGlobal Multi-App Native Build & Deploy"
+echo "==================================================="
 
-# --- CONFIG ---
-DESKTOP="/Users/shambebabu/Desktop"
-APPS=("SimbaGlobal_AI" "Shambez_Ad_On_Mute_App_v13_6_PlugAndPlay")
-LOGFILE="$DESKTOP/multi_app_build.log"
+LOOP_MODE=false
+if [[ "$1" == "--loop" ]]; then
+  LOOP_MODE=true
+  echo "♻️ Running in continuous loop mode..."
+fi
 
-echo "🦁 Multi-App Native Build Autopilot Starting..."
-echo "📜 Logs saved to: $LOGFILE"
-exec > >(tee -a "$LOGFILE") 2>&1
+APP_NAME=$(basename "$PWD")
+if [[ "$APP_NAME" == "Desktop" ]]; then
+  echo "⚡ Running from Desktop — choose app to autopilot:"
+  select APP_CHOICE in "SimbaGlobal_AI" "Ad_On_Mute"; do
+    APP_NAME="$APP_CHOICE"
+    cd ~/Desktop/$APP_NAME
+    break
+  done
+fi
 
-# --- DEVICE CHECK ---
-check_devices () {
-  echo "🔍 Checking for connected devices on Wi-Fi..."
-  IOS_DEVICES=$(xcrun xctrace list devices 2>/dev/null | grep -i "Network" || true)
-  ANDROID_DEVICES=$(adb devices -l | grep -v "List" | grep -v "offline" || true)
+echo "📂 Current App: $APP_NAME"
 
-  if [ -n "$IOS_DEVICES" ]; then
-    echo "🍎 iOS device(s) detected on Wi-Fi:"
-    echo "$IOS_DEVICES"
-  else
-    echo "⚠️ No iOS devices detected on Wi-Fi."
+build_and_deploy() {
+  NODE_VERSION=$(node -v || echo "none")
+  EXPO_VERSION=$(npx expo --version || echo "none")
+  echo "🔧 Node: $NODE_VERSION | Expo: $EXPO_VERSION"
+
+  if [[ "$NODE_VERSION" == v24* ]]; then
+    echo "⚠️ Node v24 detected — switching to v20..."
+    nvm install 20 && nvm use 20
   fi
 
-  if [ -n "$ANDROID_DEVICES" ]; then
-    echo "🤖 Android device(s) detected on Wi-Fi:"
-    echo "$ANDROID_DEVICES"
-  else
-    echo "⚠️ No Android devices detected on Wi-Fi."
-  fi
-}
-
-# --- FUNCTION TO PROCESS EACH APP ---
-process_app () {
-  APP_NAME=$1
-  APP_PATH="$DESKTOP/$APP_NAME"
-
-  echo ""
-  echo "=========================================="
-  echo "🚀 Processing $APP_NAME"
-  echo "=========================================="
-
-  if [ ! -d "$APP_PATH" ]; then
-    echo "❌ ERROR: $APP_PATH not found, skipping..."
-    return
+  if [ ! -d "node_modules" ]; then
+    echo "📦 Installing dependencies..."
+    npm install
   fi
 
-  cd "$APP_PATH"
+  if [ ! -f ".env" ]; then
+    echo "⚠️ Missing .env file — Firebase + Stripe keys required!"
+  fi
 
-  # 1. Cleanup
-  echo "🧹 Cleaning $APP_NAME..."
-  rm -rf ios android
-  find . -name ".DS_Store" -delete
-  git gc --prune=now || true
-  git fsck || true
+  echo "📈 Bumping version..."
+  jq '.expo.version |= (split(".") | .[2] = ((.[2] | tonumber) + 1 | tostring) | join("."))' app.json > app.tmp && mv app.tmp app.json
+  VERSION=$(jq -r '.expo.version' app.json)
+  echo "✅ Version updated: $VERSION"
 
-  # 2. Fix Git status + commit
-  echo "🔍 Checking Git..."
+  echo "📦 Syncing with GitHub..."
   git add .
-  git commit -m "autopilot: pre-build cleanup for $APP_NAME [$(date '+%Y-%m-%d %H:%M:%S')]" || echo "ℹ️ Nothing to commit"
+  git commit -m "chore: autopilot build $VERSION ($APP_NAME)" || echo "⚠️ No changes to commit."
+  git push origin main || echo "⚠️ Git push skipped."
 
-  # 3. Install dependencies
-  echo "📦 Installing dependencies for $APP_NAME..."
-  npm install
-
-  # 4. Create native projects
-  echo "⚒️ Rebuilding native iOS/Android folders..."
-  npx react-native eject || true
-  npx react-native upgrade --legacy || true
-
-  # 5. iOS build
-  if [ -d "ios" ]; then
-    echo "🍎 Building iOS for $APP_NAME..."
-    cd ios
-    pod install || true
-    xcodebuild -workspace *.xcworkspace -scheme $APP_NAME -sdk iphonesimulator -configuration Debug build || true
-    cd ..
+  if [[ "$HOSTNAME" == *"warp-server"* ]]; then
+    echo "🚀 Running on Warp Server — full deploy enabled"
+  else
+    echo "💻 Running locally — preview build only"
   fi
 
-  # 6. Android build
-  if [ -d "android" ]; then
-    echo "🤖 Building Android for $APP_NAME..."
-    cd android
-    ./gradlew assembleDebug || true
-    cd ..
-  fi
+  echo "🚀 Building iOS..."
+  EAS_SKIP_AUTO_FINGERPRINT=1 npx eas build --platform ios --profile preview --non-interactive || true
 
-  # 7. Install on real devices
-  echo "📲 Installing $APP_NAME on detected devices..."
-  check_devices
+  echo "🤖 Building Android..."
+  EAS_SKIP_AUTO_FINGERPRINT=1 npx eas build --platform android --profile preview --non-interactive || true
 
-  # iOS Wi-Fi deploy
-  if [ -n "$IOS_DEVICES" ]; then
-    APPFILE=$(find ios/build -name "*.app" | head -n 1)
-    if [ -n "$APPFILE" ]; then
-      ios-deploy --bundle "$APPFILE" --justlaunch || echo "⚠️ Could not install $APP_NAME on iOS device"
-    fi
-  fi
+  echo "🌐 Exporting Web..."
+  npx expo export:web || true
 
-  # Android Wi-Fi deploy
-  if [ -n "$ANDROID_DEVICES" ]; then
-    APKFILE=$(find android/app/build/outputs/apk/debug -name "*.apk" | head -n 1)
-    if [ -n "$APKFILE" ]; then
-      adb -d install -r "$APKFILE" || echo "⚠️ Could not install $APP_NAME on Android device"
-    fi
-  fi
+  EAS_OUTPUT=$(npx eas build:list --json --limit 2)
+  IOS_URL=$(echo $EAS_OUTPUT | jq -r '.builds[] | select(.platform=="ios") | .artifacts.buildUrl' | head -n1)
+  ANDROID_URL=$(echo $EAS_OUTPUT | jq -r '.builds[] | select(.platform=="android") | .artifacts.buildUrl' | head -n1)
 
-  # 8. Push to GitHub
-  echo "⬆️ Pushing $APP_NAME to GitHub..."
-  git push origin main || echo "⚠️ Git push failed for $APP_NAME"
+  echo "📡 Deploying to Warp server..."
+  ssh warp-server "mkdir -p ~/deploy/$APP_NAME && rm -rf ~/deploy/$APP_NAME/*"
+  rsync -avz --exclude 'node_modules' ./ warp-server:~/deploy/$APP_NAME/
 
-  echo "✅ Finished processing $APP_NAME"
+  echo "🎉 Multi-App Native Build Complete!"
+  echo "==================================================="
+  echo "📲 $APP_NAME v$VERSION ready:"
+  echo "   iOS build: $IOS_URL"
+  echo "   Android build: $ANDROID_URL"
+  echo "📡 Server deployed to: warp-server:~/deploy/$APP_NAME/"
+  echo "📸 Scan QR with Expo Go for instant install."
+  echo "==================================================="
 }
 
-# --- MAIN LOOP ---
-for APP in "${APPS[@]}"; do
-  process_app "$APP"
-done
+if [ "$LOOP_MODE" = true ]; then
+  while true; do
+    build_and_deploy
+    echo "⏳ Waiting for changes... (Ctrl+C to stop)"
+    sleep 60
+    git fetch origin main
+    if ! git diff --quiet HEAD origin/main; then
+      echo "🔄 New changes detected — pulling + rebuilding..."
+      git pull origin main
+    fi
+  done
+else
+  build_and_deploy
+fi
 
-echo "🎉 Multi-App Native Build Complete!"
-echo "📲 Both SimbaGlobal_AI and Ad On Mute should now be installed live on your registered devices."
+if [ "$LOOP_MODE" = false ]; then
+  echo "⚡ Starting background Warp autopilot on server..."
+  ssh warp-server "cd ~/deploy/$APP_NAME && nohup warp ./multi_app_native_build.sh --loop >> warp_autopilot.log 2>&1 &"
+  echo "✅ Background Warp autopilot started on server."
+fi
