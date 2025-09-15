@@ -1,42 +1,107 @@
 # macOS / system junk
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Node / JS
 node_modules/
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+package-lock.json.backup
+.npm
+.eslintcache
+.nyc_output
+coverage/
+*.tsbuildinfo
 
-# Expo / RN       
+# Expo / React Native       
 .expo/
+.expo-shared/
 web-build/        
 *.expo*
+dist/
+build/
+*.jsbundle
+*.map
 
-# Environment
+# Environment & Config
 .env
-.env.local    
+.env.local
+.env.*.local
+config.local.js
+secrets.json
 
-# IDE           
+# IDE / Editors          
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
 
 # iOS 
 ios/build/
 ios/Pods/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+ios/*.xcodeproj/xcuserdata/
 *.xcuserstate
-*.xcworkspace/xcuserdata/
-*.xcodeproj/project.xcworkspace/xcuserdata/
-DerivedData/             
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
 
 # Android                
 android/.gradle/
 android/app/build/
-*.apk           
+android/build/
+android/local.properties
+android/captures/
+android/.externalNativeBuild
+android/.cxx/
+*.apk
+*.aab           
 *.keystore        
 *.jks
 
-# Archives
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+temp_backup/
+*.backup
+
+# Archives & Deployment
 *.tar.gz
 *.tgz
 *.zip
-*.ipa
-*.aab
 *.bak
+deployment-*/
+
+# Python (if using)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.Python
+
+# Testing
+*.test.js.snap
+.jest/
+
+# Miscellaneous
+*.orig
+.watchmanconfig
+metro.config.js.backup
