@@ -105,3 +105,12 @@ venv/
 *.orig
 .watchmanconfig
 metro.config.js.backup
+
+# Problematic files (temporarily excluded)
+TESTING_GUIDE.md
+app.json
+eslint.config.js
+firebaseConfig.js
+components/Collapsible.tsx
+hooks/useColorScheme.ts
+android/.gitignore
