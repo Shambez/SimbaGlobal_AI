@@ -1,44 +1,42 @@
+# macOS / system junk
 .DS_Store
+
+# Node / JS
 node_modules/
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-package-lock*.json
+
+# Expo / RN       
 .expo/
-.expo-shared/
-dist/
-web-build/
+web-build/        
 *.expo*
-*.packager
+
+# Environment
 .env
-.env.*
-env.json
-env.local
-credentials.json
+.env.local    
+
+# IDE           
 .idea/
-.vscode/
-*.iml
-.venv/
-.nvmrc
+
+# iOS 
 ios/build/
 ios/Pods/
 *.xcuserstate
 *.xcworkspace/xcuserdata/
-*.xcscmblueprint
-*.xccheckout
-*.xcsettings
 *.xcodeproj/project.xcworkspace/xcuserdata/
-DerivedData/
+DerivedData/             
+
+# Android                
 android/.gradle/
 android/app/build/
-*.apk
-*.keystore
+*.apk           
+*.keystore        
 *.jks
+
+# Archives
 *.tar.gz
 *.tgz
 *.zip
 *.ipa
 *.aab
 *.bak
-*~
-Thumbs.db
