@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "SimbaGlobal AI",
-    "slug": "simbaglobal-ai",
+    "slug": "simbaglobalai",
     "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,18 +17,27 @@
     "ios": {
       "supportsTablet": true,
       "buildNumber": "3",
-      "bundleIdentifier": "com.anonymous.simbaglobal-ai"
+      "bundleIdentifier": "com.shambez.simbaglobalai"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
       "versionCode": 3,
-      "package": "com.anonymous.simbaglobalai"
+      "package": "com.shambez.simbaglobalai"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "68bbbaac-7b3a-4b1c-a134-09ff89b33d3a"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/68bbbaac-7b3a-4b1c-a134-09ff89b33d3a"
     }
   }
 }
