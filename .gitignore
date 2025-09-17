@@ -118,3 +118,4 @@ firebaseConfig.js
 components/Collapsible.tsx
 hooks/useColorScheme.ts
 android/.gitignore
+simbaglobal-ai-966f18e15175.json
